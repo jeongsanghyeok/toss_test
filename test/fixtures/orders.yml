@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  email: MyString
+  phone: MyString
+  address: MyText
+  total_price: 9.99
+  status: MyString
+  session_id: MyString
+
+two:
+  name: MyString
+  email: MyString
+  phone: MyString
+  address: MyText
+  total_price: 9.99
+  status: MyString
+  session_id: MyString

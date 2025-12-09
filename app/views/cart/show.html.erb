@@ -1,0 +1,336 @@
+<!-- Page Header -->
+<div class="bg-gradient-to-r from-purple-50 to-pink-50 py-12">
+  <div class="container mx-auto px-4 lg:px-6">
+    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between">
+      <div class="mb-6 lg:mb-0">
+        <h1 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-2">장바구니</h1>
+        <p class="text-gray-600">선택하신 상품들을 확인하고 주문을 완료하세요</p>
+      </div>
+      
+      <div class="flex items-center space-x-4">
+        <%= link_to products_path, class: "inline-flex items-center text-purple-600 hover:text-purple-700 font-medium transition-colors duration-200 group" do %>
+          <svg class="w-5 h-5 mr-2 transform group-hover:-translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+          </svg>
+          쇼핑 계속하기
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container mx-auto px-4 lg:px-6 py-12">
+  <% if @cart_items.any? %>
+    <div class="lg:flex lg:space-x-12">
+      
+      <!-- Cart Items -->
+      <div class="lg:w-2/3 mb-8 lg:mb-0">
+        <div class="bg-white rounded-3xl shadow-xl overflow-hidden">
+          <div class="p-6 lg:p-8">
+            <div class="flex items-center justify-between mb-8">
+              <h2 class="text-xl font-bold text-gray-900">선택한 상품 (<%= @cart_items.count %>개)</h2>
+              
+              <!-- Clear Cart Button -->
+              <button onclick="clearCart()" class="text-sm text-gray-500 hover:text-red-500 transition-colors duration-200">
+                <svg class="w-4 h-4 inline mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                </svg>
+                전체 삭제
+              </button>
+            </div>
+
+            <div class="space-y-6">
+              <% @cart_items.each_with_index do |cart_item, index| %>
+                <div class="flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-6 p-6 bg-gray-50 rounded-2xl cart-item" data-item-id="<%= cart_item.id %>">
+                  
+                  <!-- Product Image -->
+                  <div class="flex-shrink-0">
+                    <% if cart_item.product.image_url.present? %>
+                      <%= image_tag cart_item.product.image_url, class: "w-20 h-20 lg:w-24 lg:h-24 object-cover rounded-xl shadow-md", alt: cart_item.product.name %>
+                    <% else %>
+                      <div class="w-20 h-20 lg:w-24 lg:h-24 bg-gradient-to-br from-gray-200 to-gray-300 rounded-xl flex items-center justify-center">
+                        <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                        </svg>
+                      </div>
+                    <% end %>
+                  </div>
+
+                  <!-- Product Details -->
+                  <div class="flex-1 min-w-0">
+                    <div class="flex items-start justify-between">
+                      <div class="flex-1 mr-4">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-1"><%= cart_item.product.name %></h3>
+                        <p class="text-sm text-gray-600 mb-2"><%= cart_item.product.category %></p>
+                        <p class="text-lg font-bold text-gray-900">₩<%= number_with_delimiter(cart_item.product.price) %></p>
+                      </div>
+                      
+                      <!-- Remove Button -->
+                      <button onclick="removeItem(<%= cart_item.id %>)" class="text-gray-400 hover:text-red-500 transition-colors duration-200">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                        </svg>
+                      </button>
+                    </div>
+
+                    <!-- Quantity and Total -->
+                    <div class="flex items-center justify-between mt-4">
+                      <!-- Quantity Controls -->
+                      <div class="flex items-center space-x-3">
+                        <span class="text-sm font-medium text-gray-700">수량:</span>
+                        <%= form_with model: cart_item, url: cart_item_path(cart_item), method: :patch, local: true, class: "flex items-center" do |form| %>
+                          <div class="flex items-center border border-gray-300 rounded-lg overflow-hidden">
+                            <button type="button" onclick="decrementCartQuantity(<%= cart_item.id %>)" class="px-3 py-2 bg-gray-100 hover:bg-gray-200 text-gray-600 transition-colors duration-200">
+                              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"/>
+                              </svg>
+                            </button>
+                            <%= form.number_field :quantity, value: cart_item.quantity, min: 1, max: 99,
+                                class: "w-12 py-2 text-center font-semibold text-gray-900 bg-white focus:outline-none",
+                                id: "quantity-#{cart_item.id}",
+                                onchange: "updateQuantity(#{cart_item.id})" %>
+                            <button type="button" onclick="incrementCartQuantity(<%= cart_item.id %>)" class="px-3 py-2 bg-gray-100 hover:bg-gray-200 text-gray-600 transition-colors duration-200">
+                              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
+                              </svg>
+                            </button>
+                          </div>
+                        <% end %>
+                      </div>
+
+                      <!-- Item Total -->
+                      <div class="text-right">
+                        <span class="text-lg font-bold text-purple-600" id="total-<%= cart_item.id %>">
+                          ₩<%= number_with_delimiter(cart_item.total_price) %>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Order Summary -->
+      <div class="lg:w-1/3">
+        <div class="bg-white rounded-3xl shadow-xl overflow-hidden sticky top-8">
+          <div class="gradient-bg text-white p-6">
+            <h2 class="text-xl font-bold mb-2">주문 요약</h2>
+            <p class="text-white text-opacity-90">결제 정보를 확인하세요</p>
+          </div>
+          
+          <div class="p-6">
+            <!-- Order Details -->
+            <div class="space-y-4 mb-6">
+              <div class="flex justify-between items-center">
+                <span class="text-gray-600">상품 금액 (<%= @cart_items.count %>개)</span>
+                <span class="font-semibold">₩<%= number_with_delimiter(@total_price) %></span>
+              </div>
+              
+              <div class="flex justify-between items-center">
+                <span class="text-gray-600">배송비</span>
+                <span class="font-semibold text-green-600">무료</span>
+              </div>
+              
+              <div class="border-t pt-4">
+                <div class="flex justify-between items-center">
+                  <span class="text-lg font-bold text-gray-900">총 결제금액</span>
+                  <span class="text-2xl font-bold text-purple-600" id="grand-total">₩<%= number_with_delimiter(@total_price) %></span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Checkout Button -->
+            <div class="space-y-3">
+              <%= link_to payments_checkout_path, class: "w-full gradient-bg text-white font-bold py-4 px-6 rounded-xl hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200 text-center block" do %>
+                <svg class="w-5 h-5 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
+                </svg>
+                결제하기
+              <% end %>
+              
+              <%= link_to products_path, class: "w-full bg-gray-100 text-gray-700 font-semibold py-3 px-6 rounded-xl hover:bg-gray-200 transition-colors duration-200 text-center block" do %>
+                쇼핑 계속하기
+              <% end %>
+            </div>
+
+            <!-- Benefits -->
+            <div class="mt-6 p-4 bg-gray-50 rounded-xl">
+              <h4 class="font-semibold text-gray-900 mb-3">혜택 안내</h4>
+              <ul class="space-y-2 text-sm text-gray-600">
+                <li class="flex items-center">
+                  <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                  </svg>
+                  전 상품 무료배송
+                </li>
+                <li class="flex items-center">
+                  <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                  </svg>
+                  30일 교환/반품 보장
+                </li>
+                <li class="flex items-center">
+                  <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                  </svg>
+                  토스페이먼츠 안전결제
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <% else %>
+    <!-- Empty Cart State -->
+    <div class="text-center py-20">
+      <div class="max-w-md mx-auto">
+        <div class="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-8">
+          <svg class="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m2.6 8L6 5H3m4 8a2 2 0 104 0m6 0a2 2 0 104 0"/>
+          </svg>
+        </div>
+        <h3 class="text-2xl font-semibold text-gray-900 mb-4">장바구니가 비어있습니다</h3>
+        <p class="text-gray-600 mb-8 leading-relaxed">
+          아직 상품을 선택하지 않으셨습니다.<br>
+          다양한 프리미엄 상품들을 둘러보시고 원하는 상품을 선택해보세요.
+        </p>
+        
+        <div class="space-y-4">
+          <%= link_to products_path, class: "gradient-bg text-white font-bold py-4 px-8 rounded-xl hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200 inline-block" do %>
+            <svg class="w-5 h-5 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+            </svg>
+            상품 둘러보기
+          <% end %>
+        </div>
+
+        <!-- Recommended Categories -->
+        <div class="mt-12">
+          <h4 class="text-lg font-semibold text-gray-900 mb-6">추천 카테고리</h4>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+            <%= link_to products_path(category: '전자기기'), class: "p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-200 text-center group" do %>
+              <div class="text-2xl mb-2">💻</div>
+              <span class="text-sm font-medium text-gray-700 group-hover:text-purple-600">전자기기</span>
+            <% end %>
+            
+            <%= link_to products_path(category: '의류'), class: "p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-200 text-center group" do %>
+              <div class="text-2xl mb-2">👔</div>
+              <span class="text-sm font-medium text-gray-700 group-hover:text-purple-600">의류</span>
+            <% end %>
+            
+            <%= link_to products_path(category: '도서'), class: "p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-200 text-center group" do %>
+              <div class="text-2xl mb-2">📚</div>
+              <span class="text-sm font-medium text-gray-700 group-hover:text-purple-600">도서</span>
+            <% end %>
+            
+            <%= link_to products_path(category: '생활용품'), class: "p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-200 text-center group" do %>
+              <div class="text-2xl mb-2">🏠</div>
+              <span class="text-sm font-medium text-gray-700 group-hover:text-purple-600">생활용품</span>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<script>
+  function incrementCartQuantity(itemId) {
+    const input = document.getElementById(`quantity-${itemId}`);
+    const currentValue = parseInt(input.value);
+    if (currentValue < 99) {
+      input.value = currentValue + 1;
+      updateQuantity(itemId);
+    }
+  }
+
+  function decrementCartQuantity(itemId) {
+    const input = document.getElementById(`quantity-${itemId}`);
+    const currentValue = parseInt(input.value);
+    if (currentValue > 1) {
+      input.value = currentValue - 1;
+      updateQuantity(itemId);
+    }
+  }
+
+  function updateQuantity(itemId) {
+    const quantity = document.getElementById(`quantity-${itemId}`).value;
+    const formData = new FormData();
+    formData.append('cart_item[quantity]', quantity);
+    formData.append('_method', 'PATCH');
+
+    fetch(`/cart_items/${itemId}`, {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'X-CSRF-Token': document.querySelector('[name="csrf-token"]').content
+      }
+    }).then(response => {
+      if (response.ok) {
+        location.reload();
+      }
+    });
+  }
+
+  function removeItem(itemId) {
+    if (confirm('이 상품을 장바구니에서 삭제하시겠습니까?')) {
+      fetch(`/cart_items/${itemId}`, {
+        method: 'DELETE',
+        headers: {
+          'X-CSRF-Token': document.querySelector('[name="csrf-token"]').content,
+          'Accept': 'application/json'
+        }
+      }).then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          // Animate removal
+          const item = document.querySelector(`[data-item-id="${itemId}"]`);
+          if (item) {
+            item.style.transition = 'all 0.5s ease';
+            item.style.opacity = '0';
+            item.style.transform = 'translateX(100px)';
+            setTimeout(() => {
+              window.location.href = '/cart';
+            }, 500);
+          } else {
+            window.location.href = '/cart';
+          }
+        } else {
+          alert(data.message || '삭제에 실패했습니다. 다시 시도해주세요.');
+        }
+      }).catch(error => {
+        console.error('Error:', error);
+        alert('삭제에 실패했습니다. 다시 시도해주세요.');
+        // 에러 발생 시에도 페이지 새로고침하여 현재 상태 반영
+        setTimeout(() => {
+          window.location.href = '/cart';
+        }, 1000);
+      });
+    }
+  }
+
+  function clearCart() {
+    if (confirm('장바구니의 모든 상품을 삭제하시겠습니까?')) {
+      const cartItems = document.querySelectorAll('[data-item-id]');
+      Promise.all([...cartItems].map(item => {
+        const itemId = item.getAttribute('data-item-id');
+        return fetch(`/cart_items/${itemId}`, {
+          method: 'DELETE',
+          headers: {
+            'X-CSRF-Token': document.querySelector('[name="csrf-token"]').content
+          }
+        });
+      })).then(() => {
+        window.location.href = '/cart';
+      }).catch(error => {
+        console.error('Error:', error);
+        alert('전체 삭제에 실패했습니다. 다시 시도해주세요.');
+      });
+    }
+  }
+</script>

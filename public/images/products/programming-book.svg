@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
+  <rect width="400" height="300" fill="#FF6347"/>
+  <text x="200" y="140" text-anchor="middle" dominant-baseline="middle" fill="white" font-family="Arial, sans-serif" font-size="18" font-weight="bold">프로그래밍</text>
+  <text x="200" y="170" text-anchor="middle" dominant-baseline="middle" fill="white" font-family="Arial, sans-serif" font-size="18" font-weight="bold">완전 정복</text>
+</svg>

@@ -1,0 +1,105 @@
+<div class="container mx-auto px-4 py-8">
+  <div class="max-w-4xl mx-auto">
+    <h1 class="text-3xl font-bold mb-8">결제하기</h1>
+    
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <!-- 주문 정보 -->
+      <div class="bg-white rounded-lg shadow-md p-6">
+        <h2 class="text-xl font-semibold mb-6">주문 상품</h2>
+        
+        <div class="space-y-4">
+          <% @cart_items.each do |item| %>
+            <div class="flex items-center justify-between py-4 border-b">
+              <div class="flex-1">
+                <h3 class="font-medium"><%= item.product.name %></h3>
+                <p class="text-gray-600 text-sm"><%= item.product.description %></p>
+                <p class="text-sm text-gray-500">수량: <%= item.quantity %></p>
+              </div>
+              <div class="text-right">
+                <p class="font-semibold"><%= number_to_currency(item.total_price, unit: "₩", precision: 0) %></p>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        
+        <div class="mt-6 pt-6 border-t">
+          <div class="flex justify-between items-center text-xl font-bold">
+            <span>총 결제금액</span>
+            <span class="text-blue-600"><%= number_to_currency(@total_price, unit: "₩", precision: 0) %></span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 주문자 정보 및 결제 -->
+      <div class="bg-white rounded-lg shadow-md p-6">
+        <h2 class="text-xl font-semibold mb-4">주문자 정보</h2>
+        <p class="text-sm text-gray-600 mb-6">* 표시된 항목은 필수 입력 사항입니다.</p>
+        
+        <%= form_with model: @order, url: payments_confirm_path, data: { turbo: false }, class: "space-y-4" do |form| %>
+          <div>
+            <%= form.label :name, "이름 *", class: "block text-sm font-medium text-gray-700 mb-2" %>
+            <%= form.text_field :name, class: "w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500", required: true %>
+            <% if @order.errors[:name].any? %>
+              <p class="text-red-500 text-sm mt-1"><%= @order.errors[:name].first %></p>
+            <% end %>
+          </div>
+          
+          <div>
+            <%= form.label :email, "이메일 *", class: "block text-sm font-medium text-gray-700 mb-2" %>
+            <%= form.email_field :email, class: "w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500", required: true %>
+            <% if @order.errors[:email].any? %>
+              <p class="text-red-500 text-sm mt-1"><%= @order.errors[:email].first %></p>
+            <% end %>
+          </div>
+          
+          <div>
+            <%= form.label :phone, "전화번호 *", class: "block text-sm font-medium text-gray-700 mb-2" %>
+            <%= form.text_field :phone, placeholder: "01012345678", class: "w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500", required: true, pattern: "[0-9]{10,11}", maxlength: "11", minlength: "10" %>
+            <% if @order.errors[:phone].any? %>
+              <p class="text-red-500 text-sm mt-1"><%= @order.errors[:phone].first %></p>
+            <% end %>
+            <p class="text-xs text-gray-500 mt-1">숫자만 10~11자리 입력해주세요 (예: 01012345678)</p>
+          </div>
+          
+          <div>
+            <%= form.label :address, "배송주소 *", class: "block text-sm font-medium text-gray-700 mb-2" %>
+            <%= form.text_area :address, rows: 3, placeholder: "예: 서울시 강남구 테헤란로 123, 456호\n상세한 주소를 입력해주세요.", class: "w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500", required: true %>
+            <% if @order.errors[:address].any? %>
+              <p class="text-red-500 text-sm mt-1"><%= @order.errors[:address].first %></p>
+            <% end %>
+          </div>
+          
+          <div class="pt-6">
+            <%= form.submit "주문 정보 확인 후 결제", class: "w-full bg-blue-600 text-white py-3 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 font-semibold" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // 전화번호 입력 필드에서 숫자만 입력 가능하도록 제한
+  const phoneInput = document.getElementById('order_phone');
+  if (phoneInput) {
+    phoneInput.addEventListener('input', function(e) {
+      // 숫자가 아닌 문자 제거
+      this.value = this.value.replace(/[^0-9]/g, '');
+      
+      // 최대 11자리까지만 허용
+      if (this.value.length > 11) {
+        this.value = this.value.slice(0, 11);
+      }
+    });
+    
+    // 붙여넣기 시에도 동일하게 처리
+    phoneInput.addEventListener('paste', function(e) {
+      setTimeout(() => {
+        this.value = this.value.replace(/[^0-9]/g, '').slice(0, 11);
+      }, 0);
+    });
+  }
+});
+</script>

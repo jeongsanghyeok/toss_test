@@ -1,0 +1,200 @@
+<div class="container mx-auto px-4 lg:px-6 py-12">
+  <div class="max-w-7xl mx-auto">
+    <!-- 페이지 헤더 -->
+    <div class="mb-8">
+      <div class="flex items-center space-x-3 mb-4">
+        <%= link_to mypage_path, class: "text-gray-500 hover:text-purple-600 transition-colors" do %>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+          </svg>
+        <% end %>
+        <h1 class="text-3xl font-bold text-gray-900">주문/배송조회</h1>
+      </div>
+      <p class="text-gray-600">주문 내역과 배송 상태를 확인하실 수 있습니다</p>
+    </div>
+
+    <!-- 메인 레이아웃 -->
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- 사이드바 -->
+      <div class="lg:w-64">
+        <div class="bg-white rounded-xl shadow-lg p-6 sticky top-24">
+          <h2 class="text-lg font-bold text-gray-900 mb-6 pb-3 border-b border-gray-200">
+            <a href="<%= mypage_path %>" class="hover:text-purple-600 transition-colors">마이페이지</a>
+          </h2>
+          
+          <ul class="space-y-6">
+            <li>
+              <div class="font-semibold text-gray-800 mb-3">나의 주문내역</div>
+              <ul class="space-y-2 pl-4">
+                <li><a href="<%= mypage_orders_path %>" class="text-purple-600 font-medium">주문/배송조회</a></li>
+                <li><a href="<%= mypage_cancellations_path %>" class="text-gray-600 hover:text-purple-600 transition-colors">취소/교환/반품</a></li>
+              </ul>
+            </li>
+            
+            <li>
+              <div class="font-semibold text-gray-800 mb-3">나의 혜택</div>
+              <ul class="space-y-2 pl-4">
+                <li><a href="<%= mypage_benefits_path %>" class="text-gray-600 hover:text-purple-600 transition-colors">등급별 혜택 안내</a></li>
+                <li><a href="<%= mypage_coupons_path %>" class="text-gray-600 hover:text-purple-600 transition-colors">쿠폰 현황/다운로드</a></li>
+                <li><a href="#" class="text-gray-600 hover:text-purple-600 transition-colors">포인트 현황</a></li>
+                <li><a href="#" class="text-gray-600 hover:text-purple-600 transition-colors">통합멤버십 안내</a></li>
+              </ul>
+            </li>
+            
+            <li>
+              <div class="font-semibold text-gray-800 mb-3">나의 쇼핑</div>
+              <ul class="space-y-2 pl-4">
+                <li><a href="#" class="text-gray-600 hover:text-purple-600 transition-colors">최근 본 상품</a></li>
+                <li><a href="#" class="text-gray-600 hover:text-purple-600 transition-colors">위시리스트</a></li>
+                <li><a href="#" class="text-gray-600 hover:text-purple-600 transition-colors">찜 브랜드</a></li>
+              </ul>
+            </li>
+            
+            <li>
+              <div class="font-semibold text-gray-800 mb-3">나의 활동</div>
+              <ul class="space-y-2 pl-4">
+                <li><a href="<%= mypage_reviews_path %>" class="text-gray-600 hover:text-purple-600 transition-colors">상품리뷰</a></li>
+                <li><a href="#" class="text-gray-600 hover:text-purple-600 transition-colors">상품문의</a></li>
+                <li><a href="<%= mypage_inquiries_path %>" class="text-gray-600 hover:text-purple-600 transition-colors">1:1 문의</a></li>
+                <li><a href="#" class="text-gray-600 hover:text-purple-600 transition-colors">이벤트 참여내역</a></li>
+              </ul>
+            </li>
+            
+            <li>
+              <div class="font-semibold text-gray-800 mb-3">개인정보관리</div>
+              <ul class="space-y-2 pl-4">
+                <li><a href="#" class="text-gray-600 hover:text-purple-600 transition-colors">개인정보수정</a></li>
+                <li><a href="#" class="text-gray-600 hover:text-purple-600 transition-colors">배송지 관리</a></li>
+                <li><a href="#" class="text-gray-600 hover:text-purple-600 transition-colors">환불계좌관리</a></li>
+                <li><a href="#" class="text-gray-600 hover:text-purple-600 transition-colors">회원탈퇴</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 메인 컨텐츠 -->
+      <div class="flex-1">
+
+        <!-- 주문 필터 -->
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4">
+            <!-- 기간 선택 -->
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">기간 선택</label>
+              <select id="periodSelect" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                <option value="1month">최근 1개월</option>
+                <option value="3month">최근 3개월</option>
+                <option value="6month">최근 6개월</option>
+                <option value="1year">최근 1년</option>
+                <option value="custom">직접 선택</option>
+              </select>
+            </div>
+            
+            <!-- 시작 날짜 -->
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">시작 날짜</label>
+              <input type="date" id="startDate" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+            </div>
+            
+            <!-- 종료 날짜 -->
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">종료 날짜</label>
+              <input type="date" id="endDate" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+            </div>
+            
+            <!-- 주문상태 -->
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">주문상태</label>
+              <select class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                <option>전체</option>
+                <option>주문완료</option>
+                <option>배송준비중</option>
+                <option>배송중</option>
+                <option>배송완료</option>
+              </select>
+            </div>
+            
+            <!-- 상품명 -->
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">상품명</label>
+              <input type="text" placeholder="상품명을 입력하세요" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+            </div>
+            
+            <!-- 검색 버튼 -->
+            <div class="flex items-end">
+              <button class="w-full bg-purple-600 text-white py-2 px-4 rounded-lg hover:bg-purple-700 transition-colors">검색</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 주문 목록 -->
+        <div class="bg-white rounded-xl shadow-lg p-6">
+          <h2 class="text-xl font-bold text-gray-900 mb-6">주문 내역</h2>
+          
+          <!-- 주문 내역이 없을 때 -->
+          <div class="text-center py-12">
+            <div class="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
+              </svg>
+            </div>
+            <h3 class="text-lg font-medium text-gray-900 mb-2">주문 내역이 없습니다</h3>
+            <p class="text-gray-600 mb-6">아직 주문하신 상품이 없습니다. 다양한 상품을 둘러보세요!</p>
+            <%= link_to "쇼핑하러 가기", root_path, class: "inline-block bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition-colors" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const periodSelect = document.getElementById('periodSelect');
+  const startDate = document.getElementById('startDate');
+  const endDate = document.getElementById('endDate');
+  
+  // 현재 날짜
+  const today = new Date();
+  const todayString = today.toISOString().split('T')[0];
+  
+  // 기본값 설정 (최근 1개월)
+  const oneMonthAgo = new Date(today.getFullYear(), today.getMonth() - 1, today.getDate());
+  const oneMonthAgoString = oneMonthAgo.toISOString().split('T')[0];
+  
+  startDate.value = oneMonthAgoString;
+  endDate.value = todayString;
+  
+  // 기간 선택 변경 이벤트
+  periodSelect.addEventListener('change', function() {
+    const value = this.value;
+    let start, end = new Date();
+    
+    switch(value) {
+      case '1month':
+        start = new Date(end.getFullYear(), end.getMonth() - 1, end.getDate());
+        break;
+      case '3month':
+        start = new Date(end.getFullYear(), end.getMonth() - 3, end.getDate());
+        break;
+      case '6month':
+        start = new Date(end.getFullYear(), end.getMonth() - 6, end.getDate());
+        break;
+      case '1year':
+        start = new Date(end.getFullYear() - 1, end.getMonth(), end.getDate());
+        break;
+      case 'custom':
+        // 직접 선택 시에는 날짜 필드를 비워둠
+        startDate.value = '';
+        endDate.value = '';
+        return;
+    }
+    
+    if (start && end) {
+      startDate.value = start.toISOString().split('T')[0];
+      endDate.value = end.toISOString().split('T')[0];
+    }
+  });
+});
+</script>

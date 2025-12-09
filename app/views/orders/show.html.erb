@@ -1,0 +1,65 @@
+<div class="container mx-auto px-4 py-8">
+  <div class="max-w-2xl mx-auto">
+    <div class="text-center mb-8">
+      <div class="mb-4">
+        <svg class="mx-auto h-16 w-16 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      </div>
+      <h1 class="text-3xl font-bold text-gray-800 mb-2">주문이 완료되었습니다!</h1>
+      <p class="text-gray-600">주문 번호: #<%= @order.id %></p>
+    </div>
+
+    <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+      <h2 class="text-xl font-semibold text-gray-800 mb-4">주문 정보</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <p class="text-sm font-medium text-gray-700">주문자명</p>
+          <p class="text-gray-900"><%= @order.name %></p>
+        </div>
+        
+        <div>
+          <p class="text-sm font-medium text-gray-700">이메일</p>
+          <p class="text-gray-900"><%= @order.email %></p>
+        </div>
+        
+        <div>
+          <p class="text-sm font-medium text-gray-700">전화번호</p>
+          <p class="text-gray-900"><%= @order.phone %></p>
+        </div>
+        
+        <div>
+          <p class="text-sm font-medium text-gray-700">주문 상태</p>
+          <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-yellow-100 text-yellow-800">
+            <%= @order.status == 'pending' ? '처리 중' : @order.status %>
+          </span>
+        </div>
+      </div>
+      
+      <div class="mt-4">
+        <p class="text-sm font-medium text-gray-700">배송 주소</p>
+        <p class="text-gray-900"><%= @order.address %></p>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+      <h2 class="text-xl font-semibold text-gray-800 mb-4">결제 정보</h2>
+      
+      <div class="flex justify-between items-center py-2 border-b border-gray-200">
+        <span class="font-medium">총 주문 금액</span>
+        <span class="text-xl font-bold text-blue-600">₩<%= number_with_delimiter(@order.total_price) %></span>
+      </div>
+      
+      <div class="mt-4">
+        <p class="text-sm text-gray-600">
+          주문 확인 이메일이 <%= @order.email %>로 발송됩니다.
+        </p>
+      </div>
+    </div>
+
+    <div class="text-center space-y-4">
+      <%= link_to "쇼핑 계속하기", products_path, class: "inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg" %>
+    </div>
+  </div>
+</div>

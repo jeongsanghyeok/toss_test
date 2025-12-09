@@ -1,0 +1,72 @@
+<div class="container mx-auto px-4 py-8">
+  <div class="mb-6">
+    <%= link_to "← 장바구니로 돌아가기", cart_path, class: "text-blue-500 hover:text-blue-700" %>
+  </div>
+
+  <h1 class="text-3xl font-bold text-gray-800 mb-8">주문하기</h1>
+
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+    <div>
+      <h2 class="text-xl font-semibold text-gray-800 mb-6">주문 정보</h2>
+      
+      <%= form_with model: @order, local: true, class: "space-y-6" do |form| %>
+        <% if @order.errors.any? %>
+          <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+            <ul class="list-disc list-inside">
+              <% @order.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <div>
+          <%= form.label :name, "이름", class: "block text-sm font-medium text-gray-700 mb-2" %>
+          <%= form.text_field :name, required: true, class: "w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" %>
+        </div>
+
+        <div>
+          <%= form.label :email, "이메일", class: "block text-sm font-medium text-gray-700 mb-2" %>
+          <%= form.email_field :email, required: true, class: "w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" %>
+        </div>
+
+        <div>
+          <%= form.label :phone, "전화번호", class: "block text-sm font-medium text-gray-700 mb-2" %>
+          <%= form.tel_field :phone, required: true, class: "w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" %>
+        </div>
+
+        <div>
+          <%= form.label :address, "배송주소", class: "block text-sm font-medium text-gray-700 mb-2" %>
+          <%= form.text_area :address, required: true, rows: 3, class: "w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" %>
+        </div>
+
+        <div class="pt-6">
+          <%= form.submit "주문 완료", class: "w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg text-lg" %>
+        </div>
+      <% end %>
+    </div>
+
+    <div>
+      <h2 class="text-xl font-semibold text-gray-800 mb-6">주문 요약</h2>
+      
+      <div class="bg-gray-50 rounded-lg p-6">
+        <% @cart_items.each do |cart_item| %>
+          <div class="flex justify-between items-center py-2 border-b border-gray-200 last:border-b-0">
+            <div>
+              <h4 class="font-medium"><%= cart_item.product.name %></h4>
+              <p class="text-sm text-gray-600">수량: <%= cart_item.quantity %></p>
+            </div>
+            <p class="font-semibold">₩<%= number_with_delimiter(cart_item.total_price) %></p>
+          </div>
+        <% end %>
+        
+        <div class="pt-4 mt-4 border-t border-gray-300">
+          <div class="flex justify-between items-center text-lg font-bold">
+            <span>총 금액</span>
+            <span class="text-blue-600">₩<%= number_with_delimiter(@total_price) %></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

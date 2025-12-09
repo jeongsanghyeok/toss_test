@@ -1,0 +1,1146 @@
+<% if @show_category_view %>
+  <!-- 기존 카테고리 필터 뷰 유지 -->
+  <!-- Hero Section -->
+  <div class="relative overflow-hidden gradient-bg">
+    <div class="absolute inset-0">
+      <div class="absolute inset-0 bg-opacity-20"></div>
+      <div class="absolute inset-0 bg-gradient-to-r from-purple-800/30 to-blue-800/30"></div>
+    </div>
+    
+    <div class="relative container mx-auto px-4 lg:px-6 py-20 lg:py-32">
+      <div class="text-center text-white">
+        <h1 class="text-4xl lg:text-6xl font-bold mb-6 leading-tight">
+          프리미엄 컬렉션
+        </h1>
+        <p class="text-xl lg:text-2xl text-white text-opacity-90 mb-8 max-w-3xl mx-auto font-light">
+          엄선된 최고급 제품들로 구성된 특별한 컬렉션을 만나보세요
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6">
+          <div class="flex items-center space-x-2 text-white text-opacity-80">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+            </svg>
+            <span>전 상품 무료배송</span>
+          </div>
+          <div class="flex items-center space-x-2 text-white text-opacity-80">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.031 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+            </svg>
+            <span>품질보증</span>
+          </div>
+          <div class="flex items-center space-x-2 text-white text-opacity-80">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"/>
+            </svg>
+            <span>안전결제</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% else %>
+  <!-- 새로운 홈페이지 레이아웃 -->
+  <!-- Hero Slider Section -->
+  <div class="relative overflow-hidden h-[500px]" id="hero-slider">
+    <!-- 슬라이드 컨테이너 -->
+    <div class="absolute inset-0 flex transition-transform duration-700 ease-in-out" id="slider-container">
+      
+      <!-- 슬라이드 1 -->
+      <div class="w-full flex-shrink-0 relative gradient-bg">
+        <div class="absolute inset-0">
+          <div class="absolute inset-0 bg-opacity-20"></div>
+          <div class="absolute inset-0 bg-gradient-to-r from-purple-800/30 to-blue-800/30"></div>
+        </div>
+        <div class="relative container mx-auto px-4 lg:px-6 py-16 lg:py-24 h-full flex items-center">
+          <div class="text-center text-white w-full">
+            <h1 class="text-3xl lg:text-5xl font-bold mb-4 leading-tight">
+              LUXE STORE
+            </h1>
+            <p class="text-lg lg:text-xl text-white text-opacity-90 mb-6 max-w-2xl mx-auto font-light">
+              최고의 품질과 서비스를 제공하는 프리미엄 쇼핑몰
+            </p>
+            <button class="bg-white text-purple-600 font-semibold py-3 px-8 rounded-xl hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200">
+              쇼핑 시작하기
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 슬라이드 2 -->
+      <div class="w-full flex-shrink-0 relative bg-gradient-to-r from-blue-600 to-indigo-700">
+        <div class="absolute inset-0">
+          <div class="absolute inset-0 bg-opacity-20"></div>
+        </div>
+        <div class="relative container mx-auto px-4 lg:px-6 py-16 lg:py-24 h-full flex items-center">
+          <div class="text-center text-white w-full">
+            <h1 class="text-3xl lg:text-5xl font-bold mb-4 leading-tight">
+              🔥 특별 할인
+            </h1>
+            <p class="text-lg lg:text-xl text-white text-opacity-90 mb-6 max-w-2xl mx-auto font-light">
+              지금 구매하시면 최대 30% 할인 혜택을 받으실 수 있습니다
+            </p>
+            <button class="bg-red-500 text-white font-semibold py-3 px-8 rounded-xl hover:bg-red-600 hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200">
+              할인 상품 보기
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 슬라이드 3 -->
+      <div class="w-full flex-shrink-0 relative bg-gradient-to-r from-emerald-600 to-teal-700">
+        <div class="absolute inset-0">
+          <div class="absolute inset-0 bg-opacity-20"></div>
+        </div>
+        <div class="relative container mx-auto px-4 lg:px-6 py-16 lg:py-24 h-full flex items-center">
+          <div class="text-center text-white w-full">
+            <h1 class="text-3xl lg:text-5xl font-bold mb-4 leading-tight">
+              📱 신제품 출시
+            </h1>
+            <p class="text-lg lg:text-xl text-white text-opacity-90 mb-6 max-w-2xl mx-auto font-light">
+              최신 전자기기와 혁신적인 제품들을 만나보세요
+            </p>
+            <button class="bg-white text-emerald-600 font-semibold py-3 px-8 rounded-xl hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200">
+              신제품 보기
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 슬라이드 4 -->
+      <div class="w-full flex-shrink-0 relative bg-gradient-to-r from-pink-600 to-rose-700">
+        <div class="absolute inset-0">
+          <div class="absolute inset-0 bg-opacity-20"></div>
+        </div>
+        <div class="relative container mx-auto px-4 lg:px-6 py-16 lg:py-24 h-full flex items-center">
+          <div class="text-center text-white w-full">
+            <h1 class="text-3xl lg:text-5xl font-bold mb-4 leading-tight">
+              🚚 무료배송
+            </h1>
+            <p class="text-lg lg:text-xl text-white text-opacity-90 mb-6 max-w-2xl mx-auto font-light">
+              전 상품 무료배송 서비스로 더욱 편리한 쇼핑을 경험하세요
+            </p>
+            <button class="bg-white text-pink-600 font-semibold py-3 px-8 rounded-xl hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200">
+              자세히 보기
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 네비게이션 버튼 (데스크탑만 표시) -->
+    <button class="slider-prev-btn hidden md:block" onclick="prevSlide()"></button>
+    <button class="slider-next-btn hidden md:block" onclick="nextSlide()"></button>
+
+    <!-- 슬라이드 인디케이터 -->
+    <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-3">
+      <button class="w-4 h-4 rounded-full bg-white bg-opacity-60 hover:bg-opacity-90 transition-all duration-300 shadow-lg hover:scale-125 border-2 border-white border-opacity-30" onclick="goToSlide(0)" id="indicator-0"></button>
+      <button class="w-4 h-4 rounded-full bg-white bg-opacity-60 hover:bg-opacity-90 transition-all duration-300 shadow-lg hover:scale-125 border-2 border-white border-opacity-30" onclick="goToSlide(1)" id="indicator-1"></button>
+      <button class="w-4 h-4 rounded-full bg-white bg-opacity-60 hover:bg-opacity-90 transition-all duration-300 shadow-lg hover:scale-125 border-2 border-white border-opacity-30" onclick="goToSlide(2)" id="indicator-2"></button>
+      <button class="w-4 h-4 rounded-full bg-white bg-opacity-60 hover:bg-opacity-90 transition-all duration-300 shadow-lg hover:scale-125 border-2 border-white border-opacity-30" onclick="goToSlide(3)" id="indicator-3"></button>
+    </div>
+  </div>
+<% end %>
+
+<% if @show_category_view %>
+  <!-- 기존 메인 콘텐츠 (카테고리 필터 뷰) -->
+  <!-- Main Content -->
+  <div class="container mx-auto px-4 lg:px-6 py-16">
+  
+  <!-- 브레드크럼 네비게이션 -->
+  <% if @current_category.present? || @current_subcategory.present? || @current_detail.present? %>
+    <div class="mb-6">
+      <nav class="text-sm">
+        <ol class="list-none p-0 inline-flex items-center">
+          <li class="flex items-center">
+            <%= link_to root_path, class: "text-gray-500 hover:text-purple-600" do %>홈<% end %>
+            <svg class="w-4 h-4 mx-2 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+            </svg>
+          </li>
+          <% if @current_category.present? %>
+            <li class="flex items-center">
+              <%= link_to products_path(category: @current_category), class: "text-gray-500 hover:text-purple-600" do %>
+                <%= @current_category %>
+              <% end %>
+              <% if @current_subcategory.present? %>
+                <svg class="w-4 h-4 mx-2 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                </svg>
+              <% end %>
+            </li>
+          <% end %>
+          <% if @current_subcategory.present? %>
+            <li class="flex items-center">
+              <%= link_to products_path(category: @current_category, subcategory: @current_subcategory), class: "text-gray-500 hover:text-purple-600" do %>
+                <%= @current_subcategory %>
+              <% end %>
+              <% if @current_detail.present? %>
+                <svg class="w-4 h-4 mx-2 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                </svg>
+              <% end %>
+            </li>
+          <% end %>
+          <% if @current_detail.present? %>
+            <li class="flex items-center">
+              <span class="text-purple-600 font-medium"><%= @current_detail %></span>
+            </li>
+          <% end %>
+        </ol>
+      </nav>
+    </div>
+  <% end %>
+
+  <!-- Category Filter -->
+  <div class="mb-12">
+    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between space-y-6 lg:space-y-0">
+      <div>
+        <h2 class="text-2xl lg:text-3xl font-bold text-gray-900 mb-2">
+          <% if @current_detail.present? %>
+            <%= @current_detail %> 상품
+          <% elsif @current_subcategory.present? %>
+            <%= @current_subcategory %> 상품
+          <% elsif @current_category.present? %>
+            <%= @current_category %> 상품
+          <% else %>
+            전체 상품
+          <% end %>
+        </h2>
+        <p class="text-gray-600">
+          <% if @current_category.present? %>
+            <%= @current_category %>
+            <% if @current_subcategory.present? %> > <%= @current_subcategory %><% end %>
+            <% if @current_detail.present? %> > <%= @current_detail %><% end %>
+            카테고리의 상품들입니다
+          <% else %>
+            최고 품질의 엄선된 제품들을 만나보세요
+          <% end %>
+        </p>
+      </div>
+      
+      <div class="flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-4">
+        <%= form_with local: true, class: "flex items-center space-x-3", id: "category-filter-form" do |form| %>
+          <%= form.select :category, options_for_select([
+            ['전체 카테고리', ''],
+            ['💻 전자기기', '전자기기'],
+            ['👔 의류', '의류'],  
+            ['📚 도서', '도서'],
+            ['🏠 생활용품', '생활용품']
+          ], params[:category]), {}, { 
+            class: "bg-white border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition-colors duration-200 min-w-[180px]",
+            id: "category-select",
+            onchange: "filterByCategory(this.value)"
+          } %>
+          <%= form.submit "필터 적용", class: "gradient-bg text-white font-semibold py-3 px-6 rounded-xl hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200", id: "filter-submit" %>
+        <% end %>
+        
+        <div class="flex items-center space-x-2 text-sm text-gray-500 flex-wrap gap-2">
+          <span id="product-count">총 <%= @products.count %>개 상품</span>
+          <% if @current_category.present? %>
+            <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-xs font-semibold">
+              <%= @current_category %>
+            </span>
+          <% end %>
+          <% if @current_subcategory.present? %>
+            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-semibold">
+              <%= @current_subcategory %>
+            </span>
+          <% end %>
+          <% if @current_detail.present? %>
+            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs font-semibold">
+              <%= @current_detail %>
+            </span>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 서브카테고리 필터 (카테고리가 선택된 경우만 표시) -->
+    <% if @current_category.present? %>
+      <div class="mt-8" id="category-filters-anchor">
+        <h3 class="text-lg font-semibold text-gray-900 mb-4">세부 카테고리</h3>
+        <div class="flex flex-wrap gap-3" id="subcategory-filters">
+          <%= link_to products_path(category: @current_category), 
+                      class: "subcategory-link px-4 py-2 rounded-xl transition-all duration-200 #{'bg-purple-600 text-white' unless @current_subcategory.present?} #{'bg-gray-100 text-gray-700 hover:bg-purple-100 hover:text-purple-700' if @current_subcategory.present?}" do %>
+            전체
+          <% end %>
+          
+          <% case @current_category
+             when '전자기기'
+               subcategories = ['휴대폰', 'PC/태블릿', '웨어러블', '오디오', '가전제품']
+             when '의류'
+               subcategories = ['남성', '여성', '키즈', '상의', '아우터', '잡화']
+             when '도서'
+               subcategories = ['소설', '자기계발', '전문서적', '만화']
+             when '생활용품'
+               subcategories = ['주방용품', '욕실용품', '인테리어', '스포츠/헬스', '청소용품']
+             else
+               subcategories = []
+             end %>
+          
+          <% subcategories.each do |subcategory| %>
+            <%= link_to products_path(category: @current_category, subcategory: subcategory), 
+                        class: "subcategory-link px-4 py-2 rounded-xl transition-all duration-200 #{'bg-purple-600 text-white' if @current_subcategory == subcategory} #{'bg-gray-100 text-gray-700 hover:bg-purple-100 hover:text-purple-700' if @current_subcategory != subcategory}" do %>
+              <%= subcategory %>
+            <% end %>
+          <% end %>
+        </div>
+        
+        <!-- 세부 항목 필터 (서브카테고리가 선택된 경우만 표시) -->
+        <% if @current_subcategory.present? %>
+          <div class="mt-6">
+            <h4 class="text-md font-semibold text-gray-800 mb-3">세부 항목</h4>
+            <div class="flex flex-wrap gap-2" id="detail-filters">
+              <%= link_to products_path(category: @current_category, subcategory: @current_subcategory), 
+                          class: "detail-link px-3 py-1 text-sm rounded-lg transition-all duration-200 #{'bg-green-500 text-white' unless @current_detail.present?} #{'bg-gray-50 text-gray-600 hover:bg-green-100 hover:text-green-700' if @current_detail.present?}" do %>
+                전체
+              <% end %>
+              
+              <% case "#{@current_category}-#{@current_subcategory}"
+                 when '전자기기-휴대폰'
+                   details = ['iPhone', '갤럭시', '액세서리']
+                 when '전자기기-PC/태블릿'
+                   details = ['노트북', '데스크톱', '태블릿']
+                 when '전자기기-웨어러블'
+                   details = ['스마트워치', '이어폰']
+                 when '의류-상의'
+                   details = ['티셔츠', '셔츠', '니트']
+                 when '의류-아우터'
+                   details = ['재킷', '코트', '패딩']
+                 when '의류-잡화'
+                   details = ['가방', '신발', '모자']
+                 when '도서-전문서적'
+                   details = ['프로그래밍', '디자인', '비즈니스']
+                 when '생활용품-주방용품'
+                   details = ['요리도구', '식기', '보관용품']
+                 when '생활용품-인테리어'
+                   details = ['조명', '향초', '꾸미기']
+                 else
+                   details = []
+                 end %>
+              
+              <% details.each do |detail| %>
+                <%= link_to products_path(category: @current_category, subcategory: @current_subcategory, detail: detail), 
+                            class: "detail-link px-3 py-1 text-sm rounded-lg transition-all duration-200 #{'bg-green-500 text-white' if @current_detail == detail} #{'bg-gray-50 text-gray-600 hover:bg-green-100 hover:text-green-700' if @current_detail != detail}" do %>
+                  <%= detail %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+  <!-- Products Grid -->
+  <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+    <% @products.each do |product| %>
+      <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover group cursor-pointer" onclick="window.location.href='<%= product_path(product) %>'">
+        <div class="relative overflow-hidden">
+          <% if product.image_url.present? %>
+            <img src="<%= product.image_url %>" alt="<%= product.name %>" class="product-image" style="width: 100%; height: 256px; object-fit: cover; display: block;">
+            <div class="w-full h-64 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center" style="display: none;">
+              <div class="text-center">
+                <svg class="w-12 h-12 text-gray-400 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                </svg>
+                <span class="text-gray-400 text-sm">이미지 로딩 실패</span>
+              </div>
+            </div>
+          <% else %>
+            <div class="w-full h-64 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
+              <div class="text-center">
+                <svg class="w-12 h-12 text-gray-400 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                </svg>
+                <span class="text-gray-400 text-sm">이미지 준비중</span>
+              </div>
+            </div>
+          <% end %>
+          
+          <!-- Category Badge -->
+          <div class="absolute top-4 left-4">
+            <span class="bg-white bg-opacity-90 text-purple-600 text-xs font-semibold px-3 py-1 rounded-full backdrop-blur-sm">
+              <%= product.category %>
+            </span>
+          </div>
+          
+          <!-- Hover Overlay -->
+          <div class="absolute inset-0 bg-opacity-0 group-hover:bg-opacity-10 transition-all duration-300"></div>
+        </div>
+        
+        <div class="p-6">
+          <h3 class="text-lg font-semibold text-gray-900 mb-2 group-hover:text-purple-600 transition-colors duration-200">
+            <%= product.name %>
+          </h3>
+          <p class="text-gray-600 text-sm mb-4 line-clamp-2 leading-relaxed">
+            <%= truncate(product.description, length: 80) %>
+          </p>
+          
+          <div class="flex items-center justify-between">
+            <div class="flex flex-col">
+              <span class="text-2xl font-bold text-gray-900">
+                ₩<%= number_with_delimiter(product.price) %>
+              </span>
+              <span class="text-sm text-gray-500">
+                부가세 포함
+              </span>
+            </div>
+            
+            <div class="bg-purple-100 text-purple-600 p-3 rounded-xl group-hover:bg-purple-600 group-hover:text-white transition-all duration-200 transform group-hover:scale-105">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <!-- Empty State -->
+  <% if @products.empty? %>
+    <div class="text-center py-20">
+      <div class="mb-8">
+        <div class="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
+          <svg class="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"/>
+          </svg>
+        </div>
+        <h3 class="text-2xl font-semibold text-gray-900 mb-4">상품이 없습니다</h3>
+        <p class="text-gray-600 mb-8 max-w-md mx-auto">
+          현재 선택하신 카테고리에는 상품이 없습니다.<br>
+          다른 카테고리를 선택해보세요.
+        </p>
+        <%= link_to root_path, class: "gradient-bg text-white font-semibold py-3 px-6 rounded-xl hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200" do %>
+          전체 상품 보기
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<% else %>
+  <!-- 새로운 홈페이지 메인 콘텐츠 -->
+  <div class="flex">
+    <!-- 메인 콘텐츠 영역 -->
+    <div class="flex-1">
+      
+      <!-- 전체 상품 섹션 -->
+      <div class="container mx-auto px-4 lg:px-6 py-8">
+        <div class="mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">전체 상품</h2>
+          <p class="text-gray-600 mb-8">최신 상품들을 만나보세요</p>
+          
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <% @all_products.each do |product| %>
+              <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover group cursor-pointer" onclick="window.location.href='<%= product_path(product) %>'">
+                <div class="relative overflow-hidden">
+                  <% if product.image_url.present? %>
+                    <img src="<%= product.image_url %>" alt="<%= product.name %>" class="product-image" style="width: 100%; height: 192px; object-fit: cover; display: block;">
+                  <% else %>
+                    <div class="w-full h-48 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
+                      <span class="text-gray-400">이미지 준비중</span>
+                    </div>
+                  <% end %>
+                  
+                  <div class="absolute top-4 left-4">
+                    <span class="bg-white bg-opacity-90 text-purple-600 text-xs font-semibold px-3 py-1 rounded-full">
+                      <%= product.category %>
+                    </span>
+                  </div>
+                  
+                  <!-- Hover Overlay -->
+                  <div class="absolute inset-0 bg-opacity-0 group-hover:bg-opacity-10 transition-all duration-300"></div>
+                </div>
+                
+                <div class="p-4">
+                  <h3 class="text-lg font-semibold text-gray-900 mb-2 group-hover:text-purple-600 transition-colors duration-200">
+                    <%= product.name %>
+                  </h3>
+                  <p class="text-gray-600 text-sm mb-3 line-clamp-2">
+                    <%= truncate(product.description, length: 60) %>
+                  </p>
+                  
+                  <div class="flex items-center justify-between">
+                    <span class="text-xl font-bold text-gray-900">
+                      ₩<%= number_with_delimiter(product.price) %>
+                    </span>
+                    <div class="bg-purple-100 text-purple-600 p-2 rounded-lg group-hover:bg-purple-600 group-hover:text-white transition-all duration-200">
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+          
+          <div class="text-center mt-8">
+            <%= link_to products_path(category: ''), class: "gradient-bg text-white font-semibold py-3 px-8 rounded-xl hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200" do %>
+              전체 상품 보기
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <!-- 광고 배너 섹션 -->
+      <div class="bg-gradient-to-r from-purple-100 to-blue-100 py-16 mb-12">
+        <div class="container mx-auto px-4 lg:px-6">
+          <div class="bg-white rounded-3xl shadow-xl overflow-hidden">
+            <div class="lg:flex items-center">
+              <div class="lg:w-1/2 p-8 lg:p-12">
+                <h3 class="text-3xl font-bold text-gray-900 mb-4">특별 할인 이벤트</h3>
+                <p class="text-gray-600 text-lg mb-6">
+                  프리미엄 상품들을 특별한 가격으로 만나보세요.<br>
+                  지금 구매하시면 최대 30% 할인 혜택!
+                </p>
+                <div class="flex items-center space-x-4">
+                  <span class="bg-red-100 text-red-600 px-4 py-2 rounded-full text-sm font-semibold">
+                    🔥 한정 특가
+                  </span>
+                  <span class="text-gray-500 text-sm">
+                    이벤트 종료까지 <span class="font-bold text-red-600">3일</span> 남음
+                  </span>
+                </div>
+              </div>
+              <div class="lg:w-1/2">
+                <div class="h-64 bg-gradient-to-br from-purple-600 to-blue-600 flex items-center justify-center">
+                  <div class="text-center text-white">
+                    <div class="text-6xl font-bold mb-2">30%</div>
+                    <div class="text-xl">할인</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 카테고리별 상품 섹션 -->
+      <div class="container mx-auto px-4 lg:px-6">
+        <% @categories.each_with_index do |category, index| %>
+          <% products = @products_by_category[category] %>
+          <% next if products.empty? %>
+          
+          <div class="mb-16">
+            <div class="flex items-center justify-between mb-8">
+              <div>
+                <%= link_to products_path(category: category), class: "block hover:text-purple-600 transition-colors duration-200" do %>
+                  <h2 class="text-2xl font-bold text-gray-900 mb-2 hover:text-purple-600 transition-colors duration-200">
+                    <% case category %>
+                    <% when '전자기기' %>
+                      💻 전자기기
+                    <% when '의류' %>
+                      👔 의류
+                    <% when '도서' %>
+                      📚 도서
+                    <% when '생활용품' %>
+                      🏠 생활용품
+                    <% end %>
+                  </h2>
+                <% end %>
+                <p class="text-gray-600">
+                  <% case category %>
+                  <% when '전자기기' %>
+                    최신 기술의 전자제품들
+                  <% when '의류' %>
+                    스타일리시한 패션 아이템들
+                  <% when '도서' %>
+                    지식을 넓혀주는 양서들
+                  <% when '생활용품' %>
+                    일상을 편리하게 만드는 제품들
+                  <% end %>
+                </p>
+              </div>
+              <%= link_to products_path(category: category), class: "text-purple-600 hover:text-purple-800 font-semibold text-sm flex items-center" do %>
+                더 보기
+                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                </svg>
+              <% end %>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              <% products.each do |product| %>
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover group cursor-pointer" onclick="window.location.href='<%= product_path(product) %>'">
+                  <div class="relative overflow-hidden">
+                    <% if product.image_url.present? %>
+                      <img src="<%= product.image_url %>" alt="<%= product.name %>" class="product-image" style="width: 100%; height: 192px; object-fit: cover; display: block;">
+                    <% else %>
+                      <div class="w-full h-48 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
+                        <span class="text-gray-400">이미지 준비중</span>
+                      </div>
+                    <% end %>
+                    
+                    <!-- 평균 별점 표시 -->
+                    <% if product.reviews.any? %>
+                      <div class="absolute top-4 right-4">
+                        <div class="bg-white bg-opacity-90 text-yellow-600 text-xs font-semibold px-2 py-1 rounded-full flex items-center">
+                          ⭐ <%= product.average_rating %>
+                        </div>
+                      </div>
+                    <% end %>
+                    
+                    <!-- Hover Overlay -->
+                    <div class="absolute inset-0 bg-opacity-0 group-hover:bg-opacity-10 transition-all duration-300"></div>
+                  </div>
+                  
+                  <div class="p-4">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2 group-hover:text-purple-600 transition-colors duration-200">
+                      <%= product.name %>
+                    </h3>
+                    <p class="text-gray-600 text-sm mb-3 line-clamp-2">
+                      <%= truncate(product.description, length: 60) %>
+                    </p>
+                    
+                    <div class="flex items-center justify-between">
+                      <span class="text-xl font-bold text-gray-900">
+                        ₩<%= number_with_delimiter(product.price) %>
+                      </span>
+                      <div class="bg-purple-100 text-purple-600 p-2 rounded-lg group-hover:bg-purple-600 group-hover:text-white transition-all duration-200">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+      <!-- 고객 리뷰 섹션 -->
+      <div class="bg-gray-50 py-16 mb-12">
+        <div class="container mx-auto px-4 lg:px-6">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">고객 리뷰</h2>
+            <p class="text-gray-600">실제 구매 고객들의 솔직한 후기를 확인해보세요</p>
+          </div>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <% @recent_reviews.each do |review| %>
+              <div class="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
+                <div class="flex items-start space-x-4">
+                  <!-- 상품 이미지 -->
+                  <div class="flex-shrink-0">
+                    <% if review.product.image_url.present? %>
+                      <%= image_tag review.product.image_url, class: "w-16 h-16 object-cover rounded-lg", alt: review.product.name %>
+                    <% else %>
+                      <div class="w-16 h-16 bg-gray-200 rounded-lg flex items-center justify-center">
+                        <span class="text-gray-400 text-xs">이미지</span>
+                      </div>
+                    <% end %>
+                  </div>
+                  
+                  <div class="flex-1 min-w-0">
+                    <!-- 별점 -->
+                    <div class="flex items-center mb-2">
+                      <% (1..5).each do |i| %>
+                        <% if i <= review.rating %>
+                          <span class="text-yellow-400">⭐</span>
+                        <% else %>
+                          <span class="text-gray-300">⭐</span>
+                        <% end %>
+                      <% end %>
+                      <span class="ml-2 text-sm text-gray-600">(<%= review.rating %>/5)</span>
+                    </div>
+                    
+                    <!-- 리뷰 내용 -->
+                    <p class="text-gray-700 text-sm leading-relaxed mb-4 line-clamp-3">
+                      <%= review.content %>
+                    </p>
+                    
+                    <!-- 사용자 정보 -->
+                    <div class="flex items-center justify-between text-xs text-gray-500">
+                      <span><%= review.masked_user_id %></span>
+                      <span><%= review.created_at.strftime('%Y.%m.%d') %></span>
+                    </div>
+                    
+                    <!-- 상품명 -->
+                    <div class="mt-2">
+                      <%= link_to product_path(review.product), class: "text-purple-600 hover:text-purple-800 text-sm font-medium" do %>
+                        <%= review.product.name %>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+          
+          <% if @recent_reviews.empty? %>
+            <div class="text-center py-12">
+              <div class="text-gray-400 mb-4">
+                <svg class="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10m0 0V6a2 2 0 00-2-2H9a2 2 0 00-2 2v2m10 0v10a2 2 0 01-2 2H9a2 2 0 01-2-2V8m10 0H7"/>
+                </svg>
+              </div>
+              <p class="text-gray-500">아직 등록된 리뷰가 없습니다.</p>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <!-- 최근 본 상품 사이드바 (고정) - 로그인한 사용자 & 데스크탑만 표시 -->
+    <% if user_signed_in? %>
+      <div class="fixed right-4 w-56 z-30 hidden lg:block" id="recent-products-sidebar" style="top: 420px;">
+        <div class="bg-white rounded-xl shadow-xl overflow-hidden max-h-[70vh]">
+        <div class="bg-gradient-to-r from-purple-600 to-blue-600 p-3">
+          <h3 class="text-white font-medium text-sm">최근 본 상품</h3>
+        </div>
+        
+        <div class="overflow-y-auto max-h-96" id="recent-products-list">
+          <% if user_signed_in? && @recently_viewed_products&.any? %>
+            <% @recently_viewed_products.each do |product| %>
+              <div class="flex items-center p-3 hover:bg-gray-50 transition-colors duration-200">
+                <%= link_to product_path(product), class: "flex items-center space-x-3 w-full" do %>
+                  <% if product.image_url.present? %>
+                    <%= image_tag product.image_url, class: "w-12 h-12 object-cover rounded-lg flex-shrink-0", alt: product.name %>
+                  <% else %>
+                    <div class="w-12 h-12 bg-gray-200 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                      </svg>
+                    </div>
+                  <% end %>
+                  
+                  <div class="flex-1 min-w-0">
+                    <h4 class="text-sm font-medium text-gray-900 truncate"><%= product.name %></h4>
+                    <p class="text-xs text-purple-600 font-semibold">₩<%= number_with_delimiter(product.price) %></p>
+                  </div>
+                <% end %>
+              </div>
+            <% end %>
+          <% else %>
+            <div class="p-6 text-center text-gray-500">
+              <svg class="w-12 h-12 mx-auto mb-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+              </svg>
+              <% if user_signed_in? %>
+                <p class="text-sm">최근 본 상품이 없습니다</p>
+                <p class="text-xs mt-1">상품을 둘러보세요!</p>
+              <% else %>
+                <p class="text-sm">로그인하면</p>
+                <p class="text-xs mt-1">최근 본 상품을 확인할 수 있습니다</p>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+<!-- Newsletter Section -->
+<div class="bg-gray-50 py-16">
+  <div class="container mx-auto px-4 lg:px-6">
+    <div class="text-center max-w-2xl mx-auto">
+      <h3 class="text-3xl font-bold text-gray-900 mb-4">새로운 소식을 받아보세요</h3>
+      <p class="text-gray-600 mb-8">
+        신제품 출시 소식과 특별한 할인 혜택을 가장 먼저 받아보실 수 있습니다.
+      </p>
+      <div class="flex flex-col sm:flex-row max-w-md mx-auto space-y-4 sm:space-y-0 sm:space-x-4">
+        <input type="email" placeholder="이메일 주소를 입력하세요" 
+               class="flex-1 px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+        <button class="gradient-bg text-white font-semibold py-3 px-6 rounded-xl hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200">
+          구독하기
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  /* 상품 이미지 스타일 */
+  .product-image {
+    width: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+  }
+  
+  .card-hover:hover .product-image {
+    transform: scale(1.05);
+  }
+  
+  
+  /* 슬라이더 네비게이션 버튼 스타일 */
+  .slider-prev-btn {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    z-index: 1;
+    width: 102px;
+    height: 102px;
+    background: url(/ux/imgs/web/display/main_slider_prev@3x.png) center no-repeat;
+    background-size: 102px;
+    border: none;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+  }
+  
+  .slider-next-btn {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+    z-index: 1;
+    width: 102px;
+    height: 102px;
+    background: url(/ux/imgs/web/display/main_slider_next@3x.png) center no-repeat;
+    background-size: 102px;
+    border: none;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+  }
+  
+  .slider-prev-btn:hover,
+  .slider-next-btn:hover {
+    opacity: 1;
+  }
+</style>
+
+<script>
+  function filterByCategory(category) {
+    // 로딩 상태 표시
+    const select = document.getElementById('category-select');
+    const submitBtn = document.getElementById('filter-submit');
+    const originalText = submitBtn.textContent;
+    
+    select.disabled = true;
+    submitBtn.disabled = true;
+    submitBtn.textContent = '필터링 중...';
+    
+    // 현재 URL에 카테고리 파라미터 추가/수정
+    const url = new URL(window.location);
+    if (category === '') {
+      url.searchParams.delete('category');
+    } else {
+      url.searchParams.set('category', category);
+    }
+    
+    // 페이지 이동
+    window.location.href = url.toString();
+  }
+
+  // 페이지 로드 시 선택된 카테고리 표시 개선
+  document.addEventListener('DOMContentLoaded', function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const category = urlParams.get('category');
+    const select = document.getElementById('category-select');
+    
+    if (category && select) {
+      select.value = category;
+    }
+    
+    // 현재 선택된 카테고리 하이라이트
+    if (category) {
+      const selectedOption = select.querySelector(`option[value="${category}"]`);
+      if (selectedOption) {
+        select.classList.add('border-purple-500', 'ring-2', 'ring-purple-200');
+      }
+    }
+    
+    // 최근 본 상품 로드 (홈페이지에서만)
+    <% unless @show_category_view %>
+      loadRecentProducts();
+    <% end %>
+  });
+
+  // 최근 본 상품 관리
+  function getRecentProducts() {
+    const recent = localStorage.getItem('recentProducts');
+    return recent ? JSON.parse(recent) : [];
+  }
+
+  function addToRecentProducts(product) {
+    let recent = getRecentProducts();
+    
+    // 이미 존재하면 제거
+    recent = recent.filter(p => p.id !== product.id);
+    
+    // 맨 앞에 추가
+    recent.unshift(product);
+    
+    // 최대 10개만 유지
+    recent = recent.slice(0, 10);
+    
+    localStorage.setItem('recentProducts', JSON.stringify(recent));
+    updateRecentProductsDisplay();
+  }
+
+  function loadRecentProducts() {
+    updateRecentProductsDisplay();
+  }
+
+  function updateRecentProductsDisplay() {
+    const recentProductsList = document.getElementById('recent-products-list');
+    if (!recentProductsList) return;
+    
+    const recent = getRecentProducts();
+    
+    if (recent.length === 0) {
+      recentProductsList.innerHTML = `
+        <div class="p-6 text-center text-gray-500">
+          <svg class="w-12 h-12 mx-auto mb-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+          </svg>
+          <p class="text-sm">최근 본 상품이 없습니다</p>
+        </div>
+      `;
+      return;
+    }
+    
+    const html = recent.map(product => `
+      <div class="border-b border-gray-100 last:border-b-0">
+        <a href="/products/${product.id}" class="block p-4 hover:bg-gray-50 transition-colors duration-200">
+          <div class="flex items-center space-x-3">
+            <div class="flex-shrink-0">
+              <img src="${product.image_url || '/placeholder-image.jpg'}" alt="${product.name}" class="w-12 h-12 object-cover rounded-lg" onerror="this.src='/placeholder-image.jpg';">
+            </div>
+            <div class="flex-1 min-w-0">
+              <h4 class="text-sm font-medium text-gray-900 truncate">${product.name}</h4>
+              <p class="text-xs text-gray-500 truncate">${product.category}</p>
+              <p class="text-sm font-semibold text-purple-600 mt-1">₩${product.price.toLocaleString()}</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    `).join('');
+    
+    recentProductsList.innerHTML = html;
+  }
+
+  // 상품 페이지에서 호출될 함수 (전역 함수)
+  window.addProductToRecent = function(productData) {
+    addToRecentProducts(productData);
+  };
+
+  // 슬라이드 기능 (홈페이지에서만)
+  <% unless @show_category_view %>
+    let currentSlide = 0;
+    const totalSlides = 4;
+    let slideInterval;
+
+    function showSlide(index) {
+      const container = document.getElementById('slider-container');
+      const indicators = document.querySelectorAll('[id^="indicator-"]');
+      
+      if (container) {
+        container.style.transform = `translateX(-${index * 100}%)`;
+        
+        // 인디케이터 업데이트
+        indicators.forEach((indicator, i) => {
+          if (i === index) {
+            indicator.classList.add('bg-white', 'bg-opacity-100');
+            indicator.classList.remove('bg-opacity-50');
+          } else {
+            indicator.classList.add('bg-opacity-50');
+            indicator.classList.remove('bg-white', 'bg-opacity-100');
+          }
+        });
+      }
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % totalSlides;
+      showSlide(currentSlide);
+      resetAutoSlide();
+    }
+
+    function prevSlide() {
+      currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+      showSlide(currentSlide);
+      resetAutoSlide();
+    }
+
+    function goToSlide(index) {
+      currentSlide = index;
+      showSlide(currentSlide);
+      resetAutoSlide();
+    }
+
+    function startAutoSlide() {
+      slideInterval = setInterval(() => {
+        nextSlide();
+      }, 5000); // 5초마다 자동 전환
+    }
+
+    function resetAutoSlide() {
+      clearInterval(slideInterval);
+      startAutoSlide();
+    }
+
+    function pauseAutoSlide() {
+      clearInterval(slideInterval);
+    }
+
+    // 슬라이더에 마우스 호버 시 자동 전환 일시정지
+    document.addEventListener('DOMContentLoaded', function() {
+      const slider = document.getElementById('hero-slider');
+      if (slider) {
+        showSlide(0); // 첫 번째 슬라이드 표시
+        startAutoSlide(); // 자동 전환 시작
+        
+        slider.addEventListener('mouseenter', pauseAutoSlide);
+        slider.addEventListener('mouseleave', startAutoSlide);
+      }
+    });
+
+    // 전역 함수로 등록 (버튼 onclick에서 사용)
+    window.nextSlide = nextSlide;
+    window.prevSlide = prevSlide;
+    window.goToSlide = goToSlide;
+
+  <% end %>
+  
+  // 세부 카테고리 탭 동적 로딩 시스템 (홈페이지와 카테고리 페이지 모두에서 사용)
+  function loadSubcategoryContent(category, subcategory = '', detail = '') {
+    // 로딩 표시
+    const productsGrid = document.getElementById('products-grid');
+    const productCount = document.getElementById('product-count');
+    
+    if (productsGrid) {
+      productsGrid.innerHTML = '<div class="col-span-full text-center py-8"><div class="text-gray-500">로딩 중...</div></div>';
+    }
+    
+    // URL 생성
+    let url = '<%= products_path %>?category=' + encodeURIComponent(category);
+    if (subcategory) url += '&subcategory=' + encodeURIComponent(subcategory);
+    if (detail) url += '&detail=' + encodeURIComponent(detail);
+    
+    // AJAX 요청
+    fetch(url, {
+      headers: {
+        'Accept': 'text/html',
+        'X-Requested-With': 'XMLHttpRequest'
+      }
+    })
+    .then(response => response.text())
+    .then(html => {
+      // 새 페이지에서 상품 그리드와 개수 추출
+      const parser = new DOMParser();
+      const newDoc = parser.parseFromString(html, 'text/html');
+      
+      const newProductsGrid = newDoc.querySelector('#products-grid');
+      const newProductCount = newDoc.querySelector('#product-count');
+      
+      // 현재 페이지 업데이트
+      if (productsGrid && newProductsGrid) {
+        productsGrid.innerHTML = newProductsGrid.innerHTML;
+      }
+      if (productCount && newProductCount) {
+        productCount.textContent = newProductCount.textContent;
+      }
+      
+      // 세부 항목 필터도 업데이트
+      const detailFilters = document.getElementById('detail-filters');
+      const newDetailFilters = newDoc.querySelector('#detail-filters');
+      if (detailFilters && newDetailFilters) {
+        detailFilters.parentElement.innerHTML = newDetailFilters.parentElement.innerHTML;
+      } else if (detailFilters && !newDetailFilters) {
+        detailFilters.parentElement.style.display = 'none';
+      }
+      
+      // URL 업데이트 (브라우저 히스토리)
+      history.pushState(null, '', url);
+    })
+    .catch(error => {
+      console.error('Failed to load subcategory content:', error);
+      if (productsGrid) {
+        productsGrid.innerHTML = '<div class="col-span-full text-center py-8"><div class="text-red-500">로딩 실패</div></div>';
+      }
+    });
+  }
+
+  // 세부 카테고리 링크 클릭 이벤트
+  document.addEventListener('click', function(e) {
+    const subcategoryLink = e.target.closest('.subcategory-link');
+    
+    if (subcategoryLink) {
+      e.preventDefault(); // 기본 링크 동작 방지
+      
+      const href = subcategoryLink.getAttribute('href');
+      const url = new URL(href, window.location.origin);
+      const category = url.searchParams.get('category');
+      const subcategory = url.searchParams.get('subcategory') || '';
+      
+      // 동적 로딩
+      loadSubcategoryContent(category, subcategory);
+      
+      // 탭 상태 업데이트
+      updateTabStates(category, subcategory);
+    }
+  });
+
+  // 세부 항목 링크 클릭 이벤트
+  document.addEventListener('click', function(e) {
+    const detailLink = e.target.closest('.detail-link');
+    
+    if (detailLink) {
+      e.preventDefault();
+      
+      const href = detailLink.getAttribute('href');
+      const url = new URL(href, window.location.origin);
+      const category = url.searchParams.get('category');
+      const subcategory = url.searchParams.get('subcategory') || '';
+      const detail = url.searchParams.get('detail') || '';
+      
+      console.log('Detail tab clicked:', category, subcategory, detail);
+      
+      // 동적 로딩
+      loadSubcategoryContent(category, subcategory, detail);
+      
+      // 탭 상태 업데이트
+      updateTabStates(category, subcategory, detail);
+    }
+  });
+
+  // 탭 상태 업데이트 함수
+  function updateTabStates(category, subcategory = '', detail = '') {
+    // 세부 카테고리 탭 상태 업데이트
+    document.querySelectorAll('.subcategory-link').forEach(link => {
+      const href = link.getAttribute('href');
+      const url = new URL(href, window.location.origin);
+      const linkSubcategory = url.searchParams.get('subcategory') || '';
+      
+      // 활성 상태 클래스 토글
+      if (linkSubcategory === subcategory) {
+        link.className = link.className.replace(/bg-gray-100.*?hover:text-purple-700/, 'bg-purple-600 text-white');
+      } else {
+        link.className = link.className.replace(/bg-purple-600 text-white/, 'bg-gray-100 text-gray-700 hover:bg-purple-100 hover:text-purple-700');
+      }
+    });
+
+    // 세부 항목 탭 상태 업데이트
+    document.querySelectorAll('.detail-link').forEach(link => {
+      const href = link.getAttribute('href');
+      const url = new URL(href, window.location.origin);
+      const linkDetail = url.searchParams.get('detail') || '';
+      
+      if (linkDetail === detail) {
+        link.className = link.className.replace(/bg-gray-50.*?hover:text-green-700/, 'bg-green-500 text-white');
+      } else {
+        link.className = link.className.replace(/bg-green-500 text-white/, 'bg-gray-50 text-gray-600 hover:bg-green-100 hover:text-green-700');
+      }
+    });
+  }
+</script>
